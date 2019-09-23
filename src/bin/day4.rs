@@ -23,7 +23,7 @@ fn part2() {
         .lines()
         .map(|line| line.unwrap().split_whitespace().map(|w| {
             let mut word = w.to_owned().chars().collect_vec();
-            word.sort_by(|a, b| b.cmp(a));
+            word.sort();
             word.into_iter().collect::<String>()
         }).collect_vec())
         .filter(|l| l.iter().unique().count() == l.len()).count();
