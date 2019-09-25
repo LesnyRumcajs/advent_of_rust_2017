@@ -1,6 +1,6 @@
-use std::io::{BufReader, BufRead};
-use std::fs::File;
 use itertools::Itertools;
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 fn main() {
     part1();
@@ -9,7 +9,8 @@ fn main() {
 
 fn part1() {
     let reader = BufReader::new(File::open("res/day5.in").unwrap());
-    let mut maze : Vec<i32> = reader.lines()
+    let mut maze: Vec<i32> = reader
+        .lines()
         .map(|l| l.unwrap().parse::<i32>().unwrap())
         .collect();
 
@@ -30,7 +31,8 @@ fn part1() {
 
 fn part2() {
     let reader = BufReader::new(File::open("res/day5.in").unwrap());
-    let mut maze : Vec<i32> = reader.lines()
+    let mut maze: Vec<i32> = reader
+        .lines()
         .map(|l| l.unwrap().parse::<i32>().unwrap())
         .collect();
 
@@ -41,11 +43,7 @@ fn part2() {
     while position >= 0 && position < maze_len {
         let jump = maze[position as usize];
 
-        maze[position as usize] += if jump >= 3 {
-            -1
-        } else {
-            1
-        };
+        maze[position as usize] += if jump >= 3 { -1 } else { 1 };
 
         position += jump;
         counter += 1;

@@ -20,7 +20,7 @@ fn nearest_perfect_odd_square_test() {
 }
 
 fn part1() {
-    let puzzle_input = 277678;
+    let puzzle_input = 277_678;
     let n = nearest_perfect_odd_square(puzzle_input);
     let distance = n - 1 - (n * n - puzzle_input).abs();
 
@@ -30,17 +30,20 @@ fn part1() {
 use multiarray::*;
 
 fn part2() {
-    let puzzle_input = 277678;
+    let puzzle_input = 277_678;
     const ARR_DIMENSION: usize = 100;
     let mut spiral = Array2D::new([ARR_DIMENSION, ARR_DIMENSION], 0);
 
     let mut x_pos = ARR_DIMENSION / 2;
     let mut y_pos = ARR_DIMENSION / 2;
 
-    spiral[[x_pos,y_pos]] = 1;
+    spiral[[x_pos, y_pos]] = 1;
 
     enum Direction {
-        Left, Right, Up, Down
+        Left,
+        Right,
+        Up,
+        Down,
     }
 
     let mut direction = Direction::Right;
@@ -54,7 +57,7 @@ fn part2() {
     while current_value < puzzle_input {
         current_value = sum_neighbours(&mut spiral, x_pos, y_pos);
 
-        spiral[[x_pos,y_pos]] = current_value;
+        spiral[[x_pos, y_pos]] = current_value;
 
         match direction {
             Direction::Right => {
@@ -90,14 +93,14 @@ fn part2() {
     println!("Part 2 answer: {}", current_value);
 }
 
-fn sum_neighbours(arr: &mut MultiArray<i32, Dim2>, x: usize, y: usize) -> i32{
-    arr[[x - 1, y - 1]] +
-        arr[[x - 1, y]] +
-        arr[[x - 1, y + 1]] +
-        arr[[x, y - 1]] +
-        arr[[x, y]] +
-        arr[[x, y + 1]] +
-        arr[[x + 1, y - 1]] +
-        arr[[x + 1, y]] +
-        arr[[x + 1, y + 1]]
+fn sum_neighbours(arr: &mut MultiArray<i32, Dim2>, x: usize, y: usize) -> i32 {
+    arr[[x - 1, y - 1]]
+        + arr[[x - 1, y]]
+        + arr[[x - 1, y + 1]]
+        + arr[[x, y - 1]]
+        + arr[[x, y]]
+        + arr[[x, y + 1]]
+        + arr[[x + 1, y - 1]]
+        + arr[[x + 1, y]]
+        + arr[[x + 1, y + 1]]
 }
