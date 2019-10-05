@@ -6,7 +6,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-use crate::day7_helpers::tower::{Tower, Program};
+use crate::day7_helpers::tower::{Program, Tower};
 
 mod day7_helpers;
 

@@ -1,10 +1,11 @@
+use regex::Regex;
+
 #[derive(Hash, PartialEq, PartialOrd, Eq, Ord, Debug)]
 pub struct Program {
     pub name: String,
     pub weight: i32,
 }
 
-use regex::Regex;
 pub struct Tower {
     pub program: Program,
     pub disks_above: Option<Vec<String>>,
