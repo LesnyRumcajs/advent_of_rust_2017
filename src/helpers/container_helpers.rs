@@ -1,3 +1,6 @@
+/// Finds the first element that is different from others in a container.
+/// Returns none if all elements are equal or the container is ambiguous e.g.
+/// less than 3 elements.
 pub fn first_different_element<T>(v: &[T]) -> Option<usize>
 where
     T: Eq,
